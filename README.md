@@ -6,4 +6,4 @@
 Визуалицая представляет собой график зависимости скорость выполнения(ns)/размерность матрицы(n)
 
 ## Результат
-![График](https://github.com/klon-22800/Parallel_prog/blob/main/python_check/graphic.jpeg)
+![График](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_1/python_check/graphic.jpeg)
