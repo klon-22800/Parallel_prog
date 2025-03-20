@@ -7,3 +7,13 @@
 
 ## Результат
 ![График](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_1/python_check/graphic.jpeg)
+
+
+# Отчет ЛАБ.2
+
+## Описание 
+В данной лабораторной была использована библиотека OpenMP для многопоточного вычисления произведения матриц [клик](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_2/include/matrix/matrix.h). Параллельная обработка реализована в методе `dot()`, где строки результирующей матрицы вычсиляются разными потоками `#pragma omp parallel`, а векторизация используется для ускорения суммирования `#pragma omp simd reduction(+:sum)`. Алгоритм показал значительное увеличение производительности при работе с матрицами размера n > 100, порядка 88%. Однако на матрицах меньшего размера однопоточный алгоритм показывает более высокие результаты. 
+
+## Результат
+![График](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_2/python_check_2/log_omp.png)
+![Сравнение](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_2/python_check_2/delta_percentage.png)
