@@ -72,7 +72,7 @@ namespace matrix {
 
 
 
-			#pragma omp parallel
+			#pragma omp parallel num_threads(4)
 			{
 				#pragma omp for
 				for (int i = 0; i < _rows; ++i) {

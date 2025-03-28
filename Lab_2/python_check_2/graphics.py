@@ -22,36 +22,36 @@ def mean_update(x, y):
 
     return np.array(new_x), np.array(new_y)
 
-filename_1 = 'log.txt'  
-filename_2 = 'log_omp.txt'  
+filename_1 = 'Lab_2\\python_check_2\\log.txt'  
+filename_2 = 'Lab_2\\python_check_2\\log_omp_4.txt'  
 
  
 x, y = read_data_from_file(filename_2)
 
-plt.scatter(x, y, marker='o' , color='b', s = 10)  
+# plt.scatter(x, y, marker='o' , color='b', s = 10)  
 
-plt.title('График логов')  
-plt.xlabel('Размер матрицы N*N') 
-plt.ylabel('Время выолнения в ns') 
-plt.grid(True)  
-plt.legend()  
-plt.show()
-
-# x, y = read_data_from_file(filename_1)
-# x_omp, y_omp = read_data_from_file(filename_2)
-
-# x, y = mean_update(x, y)
-# x_omp, y_omp = mean_update(x_omp, y_omp)
-
-# delta = (y-y_omp)/y * 100
-
-
-
-# plt.plot(x, delta)  
-
-# plt.title('Сравнение однопоточного алгоритма с OMP ')  
+# plt.title('График логов')  
 # plt.xlabel('Размер матрицы N*N') 
-# plt.ylabel('Разница в процентах') 
+# plt.ylabel('Время выолнения в ns') 
 # plt.grid(True)  
 # plt.legend()  
 # plt.show()
+
+x, y = read_data_from_file(filename_1)
+x_omp, y_omp = read_data_from_file(filename_2)
+
+x, y = mean_update(x, y)
+x_omp, y_omp = mean_update(x_omp, y_omp)
+
+delta = y/y_omp 
+
+
+
+plt.plot(x, delta)  
+
+plt.title('Сравнение однопоточного алгоритма с OMP(4 потока)')  
+plt.xlabel('Размер матрицы N*N') 
+plt.ylabel('Разница') 
+plt.grid(True)  
+plt.legend()  
+plt.show()

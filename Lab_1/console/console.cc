@@ -1,6 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include <chrono>
-#include<matrix/matrix.h>
+#include <matrix/matrix.h>
 
 using namespace std;
 using namespace matrix;
