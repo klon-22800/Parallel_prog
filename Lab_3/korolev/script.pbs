@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH --job-name=matMul
+#SBATCH --time=0:10:00
+#SBATCH --ntasks-per-node=20
+#SBATCH --partition batch
+
+module load intel/mpi4
+mpirun -r ssh ./korolev

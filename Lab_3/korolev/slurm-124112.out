@@ -1,0 +1,71 @@
+500*500  4 thread
+Generate
+85.4925 ms
+Generate
+84.7452 ms
+Generate
+83.8154 ms
+mean : 84.6844 ms
+
+1000*1000  4 thread
+Generate
+2058.54 ms
+Generate
+1873.51 ms
+Generate
+1859.23 ms
+mean : 1930.43 ms
+
+1500*1500  4 thread
+Generate
+6747.46 ms
+Generate
+6759.64 ms
+Generate
+6707.42 ms
+mean : 6738.17 ms
+
+2000*2000  4 thread
+Generate
+16274.3 ms
+Generate
+16263 ms
+Generate
+16375.4 ms
+mean : 16304.2 ms
+
+2500*2500  4 thread
+Generate
+33354.1 ms
+Generate
+33159.3 ms
+Generate
+32776.6 ms
+mean : 33096.7 ms
+
+3000*3000  4 thread
+Generate
+58986.2 ms
+Generate
+59421.7 ms
+Generate
+59929.2 ms
+mean : 59445.7 ms
+
+3500*3500  4 thread
+Generate
+97758.1 ms
+Generate
+96774 ms
+Generate
+96118.4 ms
+mean : 96883.5 ms
+
+4000*4000  4 thread
+Generate
+149360 ms
+Generate
+140473 ms
+Generate
+146528 ms
+mean : 145453.667 ms

@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.11)
+
+project(matrix_multiply CXX)
+
+set(CMAKE_CXX_STANDARD 23)
+
+find_package(MPI REQUIRED)
+
+if(MSVC)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    add_compile_options(/W4 /O2 /fp:fast)
+endif()
+
+
+include_directories(include)
+
+
+add_library(matrix SHARED 
+    src/matrix.cc
+)
+
+target_link_libraries(matrix PRIVATE 
+    MPI::MPI_CXX
+)
+
+add_executable(console 
+    console/console.cc
+)
+
+add_executable(korolev 
+    console/korolev.cc
+)
+
+
+target_link_libraries(console PRIVATE 
+    matrix
+    MPI::MPI_CXX
+)
+
+target_link_libraries(korolev PRIVATE 
+    matrix
+    MPI::MPI_CXX
+)
+
+
+if(WIN32)
+    target_compile_options(console PRIVATE "/MP")  # ¬ключаем параллельную компил€цию
+    target_compile_definitions(console PRIVATE "NOMINMAX")  # ќтключаем min/max макросы Windows
+    target_compile_options(korolev PRIVATE "/MP")  # ¬ключаем параллельную компил€цию
+    target_compile_definitions(korolev PRIVATE "NOMINMAX")  # ќтключаем min/max макросы Windows
+endif()
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
