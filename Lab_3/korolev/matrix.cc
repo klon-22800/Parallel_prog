@@ -71,7 +71,6 @@ public:
 
         MPI_Bcast(&N, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-        // Рассылка матрицы B
         Matrix b_matrix(N, N);
         if (world_rank == 0) {
             b_matrix = other;
@@ -80,7 +79,6 @@ public:
             MPI_Bcast(b_matrix.data[i].data(), N, MPI_FLOAT, 0, MPI_COMM_WORLD);
         }
 
-        // Распределение строк матрицы A
         int rows_per_proc = N / world_size;
         int remainder = N % world_size;
 
@@ -112,7 +110,6 @@ public:
             }
         }
 
-        // Локальное умножение
         Matrix local_result(my_rows, N);
         for (int i = 0; i < my_rows; ++i) {
             for (int j = 0; j < N; ++j) {
@@ -122,7 +119,6 @@ public:
             }
         }
 
-        // Сбор результатов
         Matrix result;
         if (world_rank == 0) {
             result = Matrix(N, N);

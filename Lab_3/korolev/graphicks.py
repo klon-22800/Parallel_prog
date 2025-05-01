@@ -16,11 +16,11 @@ plt.ylabel('Время (мс)')
 plt.legend()
 plt.grid(True)
 
-speedup = [m4 / m12 for m4, m12 in zip(mean_4, mean_12)]
+speedup = [m4 / m12 * 100 for m4, m12 in zip(mean_4, mean_12)]
 
 plt.subplot(1, 2, 2)
 plt.plot(sizes, speedup, marker='o', color='green')
-plt.title('Ускорение: 4 потока / 12 потоков')
+plt.title('Ускорение %: 4 потока / 12 потоков')
 plt.xlabel('Размер матрицы (NxN)')
 plt.ylabel('Кратность ускорения')
 plt.grid(True)
