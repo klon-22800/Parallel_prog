@@ -47,3 +47,57 @@
 
 ### PP.S за доступ к суперкомпьютеру спасибо [общажному жителю](https://github.com/IluhaZaz) ♥♥♥
 
+
+# Отчет ЛАБ.4
+
+Работу делали: [Сайдашев Андрей](https://github.com/klon-22800), [Сергеев Денис](https://github.com/Drowchik), [Русяев Алексей](https://github.com/Amitroki), [Зазвонов Илья](https://github.com/iluhazaz), [Ноздрякова Марина](https://github.com/NozdryakovaMarina)
+
+В данной лабораторной работе была реализована параллельная версия алгоритма умножения квадратных матриц с использованием технологии CUDA.
+###Общий алгоритм
+- Каждый поток отвечает за рассчет одного элемента финальной матрицы.
+- Для покрытия всей матрицы используется CUDA-сетка из блоков потоков
+
+`dim3 block(blockSizeX, blockSizeY);`
+
+`dim3 grid((N + block.x - 1) / block.x, (N + block.y - 1) / block.y);`
+
+Пример расчета: 
+
+![Рассчет](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_4/python_check/formula1.png)
+
+- Выделение памяти и загрузка с CPU на GPU
+
+` cudaMalloc((void**)&d_A, size);`
+
+`cudaMalloc((void**)&d_B, size);`
+
+`cudaMalloc((void**)&d_C, size);`
+
+`cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);`
+
+`cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);`
+
+- Далее запускается функция вычисления матрицы `matrixMulCUDA(const float* A, const float* B, float* C, int N) `
+
+- Вычисляются индексы строки и столбца для каждого потока
+
+` int row = blockIdx.y * blockDim.y + threadIdx.y;`
+
+`int col = blockIdx.x * blockDim.x + threadIdx.x;`
+
+где 
+
+`blockIdx.x/y` - Индекс текущего блока по X/Y
+
+`blockDim.x/y` - Размер блока (кол-во потоков в одном блоке)
+
+`threadIdx.x/y` - Индекс потока внутри блока
+
+
+## Результаты
+![Результаты](https://github.com/klon-22800/Parallel_prog/blob/main/Lab_4/python_check/result.png)
+
+##Выводы:
+Расчеты были проведены на видеокарте RTX 4060, CUDA оказалась настолько хороша, что по итогу процесс вычисления замедлялся возможностями процессора по чтению матриц из файлов. Из графиков можно заметить, что увеличение размеров блоков сказывается положительно, за счет того, что требуется меньше ресурсов для их контроля, больше размерность = меньше количество блоков, но для матриц размера N < 5000, разница между block_size 16 и 32 становится несущественной. Вероятно разница была бы заметна на более больших размерах матрицы. 
+
+
