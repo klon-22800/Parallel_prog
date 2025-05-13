@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    df = pd.read_csv("results.csv")
+    df = pd.read_csv("Lab_4\\python_check\\results.csv")
 
     grouped = df.groupby(["matrix_size", "block_size"])["gpu_time"].mean().reset_index()
 
@@ -20,7 +20,7 @@ def main():
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    # plt.savefig("matrix_gpu_plot.png")  # сохранить в файл
+    plt.savefig("result.png")  
     plt.show()  
 
 if __name__ == "__main__":
