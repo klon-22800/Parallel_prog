@@ -1,0 +1,56 @@
+500*500  20 thread
+Generate
+28.1793 ms
+Generate
+15.8236 ms
+mean : 22.0014 ms
+
+1000*1000  20 thread
+Generate
+126.738 ms
+Generate
+124.458 ms
+mean : 125.598 ms
+
+1500*1500  20 thread
+Generate
+432.076 ms
+Generate
+431.712 ms
+mean : 431.894 ms
+
+2000*2000  20 thread
+Generate
+1119.67 ms
+Generate
+1123.5 ms
+mean : 1121.58 ms
+
+2500*2500  20 thread
+Generate
+3142.99 ms
+Generate
+3150.04 ms
+mean : 3146.51 ms
+
+3000*3000  20 thread
+Generate
+6634.08 ms
+Generate
+6707.22 ms
+mean : 6670.65 ms
+
+3500*3500  20 thread
+Generate
+11452.2 ms
+Generate
+11362.9 ms
+mean : 11407.5 ms
+
+4000*4000  20 thread
+Generate
+17680.3 ms
+Generate
+17547.8 ms
+mean : 17614 ms
+
