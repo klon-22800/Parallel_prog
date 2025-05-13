@@ -47,8 +47,8 @@ int main(int argc, char* argv[]) {
         << std::chrono::duration<double>(end - start).count()
         << " s\n";
 
-
-    //std::cout << "\nCorrect? " проверка резов
+    //проверка резов
+    //std::cout << "\nCorrect? " 
     //    << (C_cpu.equals(C_gpu) ? "yes" : "no") << "\n";
 
     return 0;
